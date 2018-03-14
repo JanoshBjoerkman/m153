@@ -31,14 +31,12 @@ abstract class Controller {
 
   public function handleRequest () {}
   
-  public function render ($view, $data)
-  {
+  public function render ($view, $data) {
       $_SESSION["prevview"] = $view;
       require_once(VIEW_PATH . "/" . $view);
   }
 
-  public function setAlert ($showAlert, $alertLevel, $alertMsg)
-  {
+  public function setAlert ($showAlert, $alertLevel, $alertMsg) {
     $this->showAlert = $showAlert;
     $this->alertLevel = $alertLevel;
     $this->alertMsg = $alertMsg;

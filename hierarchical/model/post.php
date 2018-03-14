@@ -1,8 +1,9 @@
 <?php
 
-class Post {
-
+class Post
+{
   public $id;
+  public $parentID;
   public $postingDate;
   public $content;
   
@@ -15,10 +16,11 @@ class Post {
   public $lastname;
   public $avatar;
 
-
-  public function __construct ($id, $postingDate, $content, $userId, $firstname, $lastname, $avatar) {
-
+  public function __construct ($id, $parentID, $postingDate, $content, $userId, $firstname, $lastname, $avatar)
+  {
     $this->id = $id;
+    $this->parentID = $parentID;
+    $this->subPosts = null;
     $this->postingDate = new DateTime ($postingDate);
     $this->content = $content;
 
@@ -28,8 +30,6 @@ class Post {
     $this->avatar = $avatar;
 
   }
-
-
 }
 
- ?>
+?>

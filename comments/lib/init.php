@@ -22,7 +22,7 @@ define("ALERT_DANGER", 3);
 define("DB_HOST", "localhost");
 define("DB_USER", "root");
 define("DB_PWD", "");
-define("DB_NAME", "hierarchical");
+define("DB_NAME", "comments");
 //character encoding for DB connection
 define("DB_INIT_COMMAND", "SET NAMES utf8");
 
