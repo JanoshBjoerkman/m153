@@ -42,7 +42,8 @@ function post_comment(postID)
 
     request.done(function(){
       console.log('posted');
-      location.reload();
+      //location.reload();
+      window.location = 'index.php?op=forum';
     });
   }
   else
