@@ -14,8 +14,6 @@ class DataExtractor {
   private $posts;
   private $currentPost;
 
-
-
   //authentication, authorization
   public $isAuthenticated = false;
   public $role = "";
@@ -107,8 +105,6 @@ class DataExtractor {
       $this->currentPost = $this->currentPost->olderSibling;
     }
   }
-
-  
 
   private function setUserData ($userModel) {
 
@@ -238,4 +234,8 @@ class DataExtractor {
     return $this->html(strftime ("%e. %B um Uhr %H:%M:%S", $this->currentPost->postingDate->getTimestamp()));
   }
 
+  public function getPostID()
+  {
+    return $this->html($this->currentPost->id);
+  }
 }

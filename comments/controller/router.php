@@ -20,7 +20,8 @@ class Router {
         $this->controller = new UserController();
       
       } elseif ((strcasecmp($_REQUEST["op"], "forum") == 0)  ||
-                (strcasecmp($_REQUEST["op"], "newpost") == 0)) {
+                (strcasecmp($_REQUEST["op"], "newpost") == 0) ||
+                (strcasecmp($_REQUEST["op"], "addComment") == 0)) {
 
         require_once(CONTROLLER_PATH . "/forum.php"); 
         $this->controller = new ForumController();

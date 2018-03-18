@@ -42,6 +42,31 @@ class ForumModel {
     return $isSuccessful;
   }
 
+  public function addComment($userID, $content, $parentPostID)
+  {
+    $now = new DateTime();
+    $sql =
+      "insert into post
+          (timestamp, content, user_id, parent_id)
+        values
+          (:timestamp, :content, :userid, :parent_id)";
+
+    $params = array (
+      ":timestamp" => $now->format("Y-m-d H:i:s"),
+      ":content" => $content,
+      ":userid" => $userID,
+      ":parent_id" => $parentPostID
+    );
+
+    $stmts = array (
+      array ($sql, $params)
+    );
+
+    $isSuccessful = DB::getConnection()->insertOrUpdate($stmts);
+    $this->loadPosts();
+
+    return $isSuccessful;
+  }
 
   public function addChildNodes (&$youngestChildNode, $parentNode) {
 

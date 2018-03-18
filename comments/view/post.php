@@ -13,7 +13,11 @@
       </h4>
       <p><?php echo $data->getPostContent() ?></p>
       
-      <button type="button" class="btn btn-default" onclick="">comment</button>
+      <button type="button" class="btn btn-default" onclick="comment(this, <?php echo $data->getPostID() ?>)">comment</button>
+      <div class="comment_textarea">
+        <textarea name="comment_box" id="comment_text_<?php echo $data->getPostID() ?>" rows="3"></textarea>
+        <button type="button" class="btn btn-default" onclick="post_comment(<?php echo $data->getPostID() ?>)">send</button>
+      </div>
       
       <?php
         if ($data->issetYoungestChild())

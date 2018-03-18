@@ -20,3 +20,41 @@ $(document).ready(function ()
   });
 });
 
+function comment(currentElement, postID)
+{
+  // get clicked element
+  var comment_area = $('#comment_text_'+postID);
+  hideAllCommentAreas();
+  comment_area.parent().show();
+  comment_area.show();
+}
+
+function post_comment(postID)
+{
+  var text = $('#comment_text_'+postID);
+  if(text.val() != "")
+  {
+    var request = $.ajax({
+      url: "index.php?",
+      type: 'POST',
+      data: {content:text.val(), op:"addComment", parentID:postID}
+    });
+
+    request.done(function(){
+      console.log('posted');
+      location.reload();
+    });
+  }
+  else
+  {
+    hideAllCommentAreas();
+  }
+}
+
+function hideAllCommentAreas()
+{
+  // hide all open comment areas
+  $('.comment_textarea').each(function(){
+    $(this).hide();
+  });
+}

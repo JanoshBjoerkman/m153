@@ -10,4 +10,9 @@ img.media-object {
   width:24px;
 }
 
+.comment_textarea
+{
+  display: none;
+}
+
 

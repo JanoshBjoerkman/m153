@@ -13,8 +13,6 @@ class ForumController extends Controller {
   }
 
   public function handleRequest () {
-
-
     try {
       $this->userModel = Factory::getUserModel();
 
@@ -22,10 +20,20 @@ class ForumController extends Controller {
 
         $this->forumModel = Factory::getForumModel();
 
-        if (strcasecmp($_REQUEST["op"], "newpost") == 0) {
+        if (strcasecmp($_REQUEST["op"], "newpost") == 0)
+        {
           $isSuccessful = $this->forumModel->addPost($this->userModel->id, $_REQUEST["content"]);
-          if (!$isSuccessful) {
+          if (!$isSuccessful)
+          {
             $this->setAlert(true, ALERT_DANGER, "Unknown error. Adding new post failed.");
+          }
+        }
+        if(strcasecmp($_REQUEST["op"], "addComment") == 0)
+        {
+          $isSuccessful = $this->forumModel->addComment($this->userModel->id, $_REQUEST["content"], $_REQUEST["parentID"]);
+          if (!$isSuccessful)
+          {
+            $this->setAlert(true, ALERT_DANGER, "Unknown error. Adding new comment failed.");
           }
         }
 
